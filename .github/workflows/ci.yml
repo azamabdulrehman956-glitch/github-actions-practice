@@ -12,5 +12,11 @@ jobs:
     steps:
       - name: checkout code
         uses: actions/checkout@v4
-      - name: Run test
-        run: echo "CI is working"
+
+      - name: test
+        run: echo "testing...."
+  build:
+    runs-on:ubuntu-latest
+    steps:
+      - name: build
+        run: echo "building.."
