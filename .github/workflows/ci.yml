@@ -19,6 +19,8 @@ jobs:
         run: |
           echo "environment: $APP_ENV"
           echo "App- Name: $APP_NAME"
+      - name: test secret
+        run: echo "secret exist: ${{secrets.MY_SECRET !=''}}"
              
 
       - name: test
