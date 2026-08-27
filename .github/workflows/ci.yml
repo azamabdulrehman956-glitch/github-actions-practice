@@ -21,9 +21,11 @@ jobs:
           echo "App- Name: $APP_NAME"
       - name: test secret
         run: |
-          if [ -n "$[[secrets.MY_SECRET ]]"; then
+          if [ -n "${{ secrets.MY_SECRET }}" ]; then
+            echo "Secret exists: true"
+          else
             echo "Secret exists: false"
-           fi
+          fi
              
 
       - name: test
