@@ -9,12 +9,18 @@ on:
 jobs:
   test:
     runs-on: ubuntu-latest
+    outputs:
+      app-version: ${{ steps.version.outputs.version }}
+
     env:
       APP_ENV: development
       APP_NAME: Notes-App
     steps:
       - name: checkout code
         uses: actions/checkout@v4
+      - name: Get version
+        id: version
+        run: echo "version=v1.0">> "$GITHUB_OUTPUT"
       - name: show environment
         run: |
           echo "environment: $APP_ENV"
@@ -34,5 +40,8 @@ jobs:
     needs: test
     runs-on: ubuntu-latest
     steps:
+      - name: Show version
+        run: echo "Version is ${{ needs.test.outputs.app-version }}"
       - name: build
         run: echo "building.."
+  
