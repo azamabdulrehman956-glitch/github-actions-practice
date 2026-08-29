@@ -36,6 +36,9 @@ jobs:
 
       - name: test
         run: echo "testing...."
+      - name: Development check
+        if: env.APP_ENV == 'development'
+        run: echo "This is development environment"
   build:
     needs: test
     runs-on: ubuntu-latest
