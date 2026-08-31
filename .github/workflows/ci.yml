@@ -32,15 +32,13 @@ jobs:
           else
             echo "Secret exists: false"
           fi
-      - name: Intentional failure
-        run: exit 1
-      - name: Failure message
-        if: failure()
-        run: echo " A previous step failed!"
             
       
       - name: test
         run: echo "testing...."
+      - name: success message
+        if: success()
+        run: echo "All previous steps are successful!"
       - name: Development check
         if: env.APP_ENV == 'development'
         run: echo "This is development environment"
