@@ -42,6 +42,9 @@ jobs:
       - name: Development check
         if: env.APP_ENV == 'development'
         run: echo "This is development environment"
+      - name: production development check
+        if: env.APP_ENV == 'production' && success()
+        run: echo "production development is allowed!"
   build:
     needs: test
     runs-on: ubuntu-latest
